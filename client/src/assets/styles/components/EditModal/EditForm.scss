@@ -1,0 +1,68 @@
+.EditForm {
+  display: block;
+  height: 22rem;
+  width: 100%;
+  max-width: $max-width;
+  min-width: $min-width;
+  margin-bottom: 10rem;
+  padding: $medium;
+  border-radius: $border-radius-1;
+  color: $color-white-1;
+  background-color: $color-dark-1;
+  transition: all 0.2s ease-in;
+
+  &__title {
+    margin-bottom: $small;
+    text-align: center;
+    font-size: $large;
+    letter-spacing: 0.5px;
+  }
+
+  &__input {
+    display: block;
+    width: 100%;
+    height: 5.5rem;
+    padding-left: $medium;
+    border: none;
+    border: 2px solid $color-dark-1;
+    border-radius: 0.8rem;
+    outline: none;
+    font-family: $font-1;
+    font-size: $medium;
+    font-weight: 700;
+    color: rgba($color-white-1, 0.9);
+    background-color: $bg-color-primary;
+
+    &::first-letter {
+      text-transform: capitalize;
+    }
+  }
+
+  &__cancel,
+  &__submit {
+    width: 50%;
+    height: 5rem;
+    margin-top: $medium;
+    border: none;
+    border: 2px solid $color-dark-1;
+    outline: none;
+    font-family: $font-1;
+    font-size: $medium;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  &__cancel {
+    border-top-left-radius: $border-radius-1;
+    border-bottom-left-radius: $border-radius-1;
+    border-right: 3px solid $color-dark-1;
+    background-color: $color-red;
+  }
+
+  &__submit {
+    border-top-right-radius: $border-radius-1;
+    border-bottom-right-radius: $border-radius-1;
+    border-left: 3px solid $color-dark-1;
+    background-color: $color-green;
+  }
+}

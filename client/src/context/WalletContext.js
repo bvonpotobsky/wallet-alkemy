@@ -2,9 +2,10 @@ import { createContext, useState, useEffect } from "react";
 
 const WalletContext = createContext();
 
-function WalletProvider(props) {
-  //! const test = { id: 1, text: "test", amounts: 20, date: "2021-09-25" };
+function WalletProvider({ children }) {
   const [transactions, setTransactions] = useState([]);
+  // Modal to edit transaction text
+  const [openModal, setOpenModal] = useState(false);
 
   // All transactions amounts
   const amounts = transactions.map((transaction) =>
@@ -60,6 +61,27 @@ function WalletProvider(props) {
     }
   };
 
+  // UPDATE /:id Transaction
+  const updateTransaction = async (newText, id) => {
+    try {
+      const body = { newText };
+      const editTransaction = await fetch(
+        `http://localhost:5000/transactions/${id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        }
+      );
+      console.log(editTransaction);
+      getTransactions();
+      setOpenModal(false);
+    } catch (err) {
+      console.error(err.message);
+      console.log(err);
+    }
+  };
+
   // SEARCH transactions
   const [searchValue, setSearchValue] = useState("");
   let searchedTransactions = [];
@@ -90,17 +112,20 @@ function WalletProvider(props) {
     <WalletContext.Provider
       value={{
         transactions,
+        amounts,
         getTransactions,
         addTransaction,
         deleteTransaction,
-        amounts,
+        updateTransaction,
         searchValue,
         setSearchValue,
         searchedTransactions,
         displayWithCommas,
+        openModal,
+        setOpenModal,
       }}
     >
-      {props.children}
+      {children}
     </WalletContext.Provider>
   );
 }

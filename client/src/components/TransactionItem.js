@@ -1,9 +1,17 @@
 import { useContext } from "react";
 import { WalletContext } from "../context/WalletContext";
+import { Modal } from "./EditModal/Modal";
+import { EditForm } from "./EditModal/EditForm";
+
 import dayjs from "dayjs";
 
-function TransactionItem({ text, amount, date, deleteTransaction }) {
-  const { displayWithCommas } = useContext(WalletContext);
+function TransactionItem({ id, text, amount, date, deleteTransaction }) {
+  const { displayWithCommas, openModal, setOpenModal } =
+    useContext(WalletContext);
+
+  const onEdit = () => {
+    setOpenModal(true);
+  };
 
   // Formats the displayed DATE
   function formatDate(date) {
@@ -37,7 +45,15 @@ function TransactionItem({ text, amount, date, deleteTransaction }) {
           {/* +$10 / -$10 */}
         </p>
       </div>
-      <button className="History__list__item--editBtn">✏️</button>
+      <button onClick={onEdit} className="History__list__item--editBtn">
+        ✏️
+      </button>
+
+      {openModal && (
+        <Modal>
+          <EditForm id={id} text={text} />
+        </Modal>
+      )}
     </li>
   );
 }
