@@ -75,7 +75,7 @@ app.delete("/transactions/:id", async (req, res) => {
 app.put("/transactions/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const { text } = req.body;
+    const { newText: text } = req.body;
     const updateTransaction = await pool.query(
       "UPDATE transactions SET text = $1 WHERE id = $2",
       [text, id]
