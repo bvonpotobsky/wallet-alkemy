@@ -1,4 +1,4 @@
-CREATE DATABASE wallet;
+-- CREATE DATABASE wallet;
 
 CREATE TABLE transactions(
   id SERIAL PRIMARY KEY,
