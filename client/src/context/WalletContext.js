@@ -64,7 +64,10 @@ function WalletProvider(props) {
   const [searchValue, setSearchValue] = useState("");
   let searchedTransactions = [];
   if (!searchValue.length >= 1) {
-    searchedTransactions = transactions;
+    // Sort transaction by date
+    searchedTransactions = transactions.sort(
+      (a, b) => new Date(b.date) - new Date(a.date)
+    );
   } else {
     searchedTransactions = transactions.filter((transaction) => {
       const transactionsText = transaction.text.toLowerCase();
