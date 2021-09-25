@@ -63,6 +63,8 @@ function Form() {
             onChange={(e) => setAmount(e.target.value)}
             required
             step="any"
+            max="9999999"
+            min="-9999999"
           />
           <input
             className="Form__two--date"
