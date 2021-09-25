@@ -1,0 +1,38 @@
+.Transactions {
+  width: 100%;
+  max-width: $max-width;
+  min-width: $min-width;
+  font-size: 2rem;
+  margin: 0 auto;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 $small;
+    margin-bottom: $small;
+
+    &__title {
+      position: relative;
+      display: inline-block;
+    }
+
+    &__counter {
+      position: relative;
+      display: inline-block;
+      font-style: italic;
+      font-weight: 500;
+      color: rgba($color-white-1, 0.7);
+    }
+  }
+}
+
+.History {
+  width: 100%;
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    font-size: $medium;
+  }
+}

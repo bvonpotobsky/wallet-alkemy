@@ -3,6 +3,8 @@ import { createContext, useState, useEffect } from "react";
 const WalletContext = createContext();
 
 function WalletProvider(props) {
+  //! const test = { id: 1, text: "test", amounts: 20, date: "2021-09-25" };
+
   const [transactions, setTransactions] = useState([]);
 
   // All transactions amounts
