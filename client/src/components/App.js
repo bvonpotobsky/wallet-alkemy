@@ -1,5 +1,12 @@
+import { WalletProvider } from "../context/WalletContext";
+import { AppUI } from "./AppUI";
+
 function App() {
-  return <h1>Wallet App</h1>;
+  return (
+    <WalletProvider>
+      <AppUI />
+    </WalletProvider>
+  );
 }
 
 export { App };
