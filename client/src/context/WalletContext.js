@@ -4,7 +4,6 @@ const WalletContext = createContext();
 
 function WalletProvider(props) {
   //! const test = { id: 1, text: "test", amounts: 20, date: "2021-09-25" };
-
   const [transactions, setTransactions] = useState([]);
 
   // All transactions amounts
@@ -74,6 +73,11 @@ function WalletProvider(props) {
     });
   }
 
+  // Set ammount with commas
+  function displayWithCommas(amount) {
+    return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
   // Re-render transaction list
   useEffect(() => {
     getTransactions();
@@ -90,6 +94,7 @@ function WalletProvider(props) {
         searchValue,
         setSearchValue,
         searchedTransactions,
+        displayWithCommas,
       }}
     >
       {props.children}

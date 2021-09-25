@@ -1,6 +1,10 @@
+import { useContext } from "react";
+import { WalletContext } from "../context/WalletContext";
 import dayjs from "dayjs";
 
 function TransactionItem({ text, amount, date, deleteTransaction }) {
+  const { displayWithCommas } = useContext(WalletContext);
+
   // Formats the displayed DATE
   function formatDate(date) {
     return dayjs(date).format("DD/MM/YY");
@@ -29,7 +33,7 @@ function TransactionItem({ text, amount, date, deleteTransaction }) {
           className={`History__list__item--amount ${defineAmountColor(amount)}`}
         >
           {/* The amount value goes here*/}
-          {defineAmountSign(amount)}${Math.abs(amount)}
+          {defineAmountSign(amount)}${displayWithCommas(Math.abs(amount))}
           {/* +$10 / -$10 */}
         </p>
       </div>

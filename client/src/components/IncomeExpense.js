@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { WalletContext } from "../context/WalletContext";
 
 function IncomeExpense() {
-  const { amounts } = useContext(WalletContext);
+  const { amounts, displayWithCommas } = useContext(WalletContext);
 
   const income = amounts
     .filter((item) => item > 0)
@@ -18,11 +18,11 @@ function IncomeExpense() {
     <section className="Balance">
       <div className="Balance__income">
         <h3>Income</h3>
-        <p>${income}</p>
+        <p>${displayWithCommas(income)}</p>
       </div>
       <div className="Balance__expense">
         <h3>Expense</h3>
-        <p>${expense}</p>
+        <p>${displayWithCommas(expense)}</p>
       </div>
     </section>
   );

@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { WalletContext } from "../context/WalletContext";
 
 function Balance() {
-  const { amounts } = useContext(WalletContext);
+  const { amounts, displayWithCommas } = useContext(WalletContext);
 
   // Sum of all amounts
   const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2);
@@ -21,7 +21,7 @@ function Balance() {
       <div className="Header__balance">
         <p className="Header__balance--p1">Balance</p>
         <p id="balance" className={`Header__balance--p2 ${defineClass()}`}>
-          ${total}
+          ${displayWithCommas(total)}
         </p>
       </div>
     </header>
