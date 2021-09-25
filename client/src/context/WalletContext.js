@@ -5,6 +5,11 @@ const WalletContext = createContext();
 function WalletProvider(props) {
   const [transactions, setTransactions] = useState([]);
 
+  // All transactions amounts
+  const amounts = transactions.map((transaction) =>
+    parseFloat(transaction.amount)
+  );
+
   // GET ALL Transactions
   const getTransactions = async () => {
     try {
@@ -66,6 +71,7 @@ function WalletProvider(props) {
         getTransactions,
         addTransaction,
         deleteTransaction,
+        amounts,
       }}
     >
       {props.children}

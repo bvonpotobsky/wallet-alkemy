@@ -1,0 +1,33 @@
+.Header {
+  position: relative;
+  width: 100%;
+  max-width: $max-width;
+  min-width: $min-width;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: $medium $small;
+  font-size: $large;
+  line-height: $x-large;
+  overflow: hidden;
+
+  &__greetings {
+    text-align: left;
+    font-weight: 600;
+  }
+
+  &__balance {
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    &--p2.income {
+      color: $color-green;
+    }
+
+    &--p2.expense {
+      color: $color-red;
+    }
+  }
+}

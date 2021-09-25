@@ -1,5 +1,7 @@
+import { Balance } from "./Balance";
+
 function AppUI() {
-  return <h1>Wallet components goes here</h1>;
+  return <Balance />;
 }
 
 export { AppUI };
