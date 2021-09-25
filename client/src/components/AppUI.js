@@ -1,7 +1,13 @@
 import { Balance } from "./Balance";
+import { IncomeExpense } from "./IncomeExpense";
 
 function AppUI() {
-  return <Balance />;
+  return (
+    <>
+      <Balance />
+      <IncomeExpense />
+    </>
+  );
 }
 
 export { AppUI };

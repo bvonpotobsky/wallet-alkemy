@@ -1,0 +1,34 @@
+.Balance {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  max-width: $max-width;
+  min-width: $min-width;
+  margin: 0 auto;
+  height: 9rem;
+  border: 3px solid rgba($color-white-1, 0.9);
+  border-radius: 0.8rem;
+  overflow: hidden;
+
+  &__income,
+  &__expense {
+    width: 50%;
+    margin: $small 0;
+    text-align: center;
+
+    h3 {
+      font-size: $large;
+    }
+
+    p {
+      font-size: $large;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+  }
+
+  &__income {
+    border-right: 2px solid rgba($color-white-1, 0.9);
+  }
+}
