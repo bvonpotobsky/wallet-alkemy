@@ -4,6 +4,7 @@ import { TransactionsList } from "./TransactionsList";
 import { TransactionItem } from "./TransactionItem";
 import { useContext } from "react";
 import { WalletContext } from "../context/WalletContext";
+import { Form } from "./Form";
 
 function AppUI() {
   const { transactions, deleteTransaction } = useContext(WalletContext);
@@ -24,6 +25,7 @@ function AppUI() {
           />
         ))}
       </TransactionsList>
+      <Form />
     </>
   );
 }

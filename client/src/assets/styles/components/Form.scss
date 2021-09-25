@@ -1,0 +1,124 @@
+.AddNew {
+  position: relative;
+  width: 100%;
+  max-width: $max-width;
+  min-width: $min-width;
+  margin: 0 auto;
+  font-size: $medium;
+
+  &__title {
+    margin: $small 0;
+    text-align: center;
+    font-weight: 600;
+  }
+}
+
+.Form {
+  display: flex;
+  flex-direction: column;
+
+  &__one {
+    display: flex;
+    flex-direction: row;
+    box-shadow: $box-shadow-1;
+
+    &--text {
+      flex-grow: 1;
+      height: 5.5rem;
+      padding-left: $medium;
+      border: none;
+      border-radius: $border-radius-1;
+      outline: none;
+      font-family: $font-1;
+      font-size: $medium;
+      font-weight: 700;
+      color: $color-white-1;
+      background-color: $bg-color-primary;
+    }
+  }
+
+  &__two {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    box-shadow: $box-shadow-1;
+
+    &--date,
+    &--amount {
+      height: 5.5rem;
+      outline: none;
+      border: none;
+      font-family: $font-1;
+      font-size: $medium;
+      font-weight: 700;
+      color: $color-white-1;
+      background-color: $bg-color-primary;
+    }
+
+    &--amount {
+      width: 55%;
+      display: inline-block;
+      padding: 0 $medium;
+      border-top-left-radius: $border-radius-1;
+      border-bottom-left-radius: $border-radius-1;
+
+      // Remove arrows from 'amount' input
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+      }
+    }
+
+    &--date {
+      flex: 1;
+      display: inline-block;
+      border-top-right-radius: $border-radius-1;
+      border-bottom-right-radius: $border-radius-1;
+      padding-right: $medium;
+      font-size: 1.7rem;
+      cursor: pointer;
+    }
+  }
+
+  // Income or Expense explanation message
+  &__explanation {
+    position: relative;
+    margin: $small;
+
+    &--income {
+      color: $color-green;
+      padding-right: $small;
+    }
+    &--expense {
+      padding-left: $small;
+      color: $color-red;
+    }
+  }
+
+  // Add transaction
+  &__button {
+    height: 6rem;
+    width: 6rem;
+    margin: $medium auto;
+    border: none;
+    border-radius: 50%;
+    font-size: $x-large;
+    font-weight: bold;
+    color: $color-gray-1;
+    background-color: rgba($color-green, 0.9);
+    outline: none;
+    transition: all 0.4s;
+    cursor: pointer;
+    transform: rotate(0);
+    transition: 0.3s ease;
+
+    &:hover {
+      transform: rotate(270deg);
+    }
+  }
+}
+
+// Input placeholder
+::placeholder {
+  color: rgba($color-white-1, 0.9);
+}
