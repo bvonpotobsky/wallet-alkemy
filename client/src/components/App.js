@@ -1,5 +1,5 @@
 function App() {
-  return <h1>Hola Alkemy Labs</h1>;
+  return <h1>Wallet App</h1>;
 }
 
 export { App };
