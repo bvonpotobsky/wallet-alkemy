@@ -61,6 +61,19 @@ function WalletProvider(props) {
     }
   };
 
+  // SEARCH transactions
+  const [searchValue, setSearchValue] = useState("");
+  let searchedTransactions = [];
+  if (!searchValue.length >= 1) {
+    searchedTransactions = transactions;
+  } else {
+    searchedTransactions = transactions.filter((transaction) => {
+      const transactionsText = transaction.text.toLowerCase();
+      const searchText = searchValue.toLowerCase();
+      return transactionsText.includes(searchText);
+    });
+  }
+
   // Re-render transaction list
   useEffect(() => {
     getTransactions();
@@ -74,6 +87,9 @@ function WalletProvider(props) {
         addTransaction,
         deleteTransaction,
         amounts,
+        searchValue,
+        setSearchValue,
+        searchedTransactions,
       }}
     >
       {props.children}

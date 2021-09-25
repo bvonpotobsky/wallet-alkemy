@@ -5,16 +5,18 @@ import { TransactionItem } from "./TransactionItem";
 import { useContext } from "react";
 import { WalletContext } from "../context/WalletContext";
 import { Form } from "./Form";
+import { SearchTransaction } from "./SearchTransaction";
 
 function AppUI() {
-  const { transactions, deleteTransaction } = useContext(WalletContext);
+  const { searchedTransactions, deleteTransaction } = useContext(WalletContext);
 
   return (
     <>
       <Balance />
       <IncomeExpense />
+      <SearchTransaction />
       <TransactionsList>
-        {transactions.map((transaction) => (
+        {searchedTransactions.map((transaction) => (
           <TransactionItem
             id={transaction.id}
             key={transaction.id}
