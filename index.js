@@ -13,9 +13,9 @@ app.listen(5000, () => {
 
 // ROUTES
 // POST NEW Transaction
-app.get("/transactions", async (req, res) => {
+app.post("/transactions", async (req, res) => {
   try {
-    const { text, amout, date } = req.body;
+    const { text, amount, date } = req.body;
     const newTransaction = await pool.query(
       "INSERT INTO transactions (text, amount, date) VALUES ($1, $2, $3) RETURNING *",
       [text, amount, date]
