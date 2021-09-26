@@ -62,7 +62,7 @@
     height: 100%;
     transform: scale(1.5);
     top: -3px;
-    right: 5px;
+    right: 3px;
     color: $color-dark-1;
     background-color: transparent;
     outline: none;
@@ -81,13 +81,13 @@
     height: 100%;
     transform: scale(1.5);
     top: -3px;
-    left: 4px;
+    left: 7px;
     color: $color-dark-1;
     background-color: transparent;
     outline: none;
     border: none;
     opacity: 0;
-    transition: all 0.5s;
+    transition: all 0.4s;
     overflow: hidden;
     cursor: pointer;
     user-select: none;
