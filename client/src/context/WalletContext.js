@@ -73,7 +73,7 @@ function WalletProvider({ children }) {
           body: JSON.stringify(body),
         }
       );
-      console.log(editTransaction);
+      console.log("Transaction was updated", editTransaction.status);
       getTransactions();
       setOpenModal(false);
     } catch (err) {
