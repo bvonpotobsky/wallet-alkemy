@@ -6,9 +6,9 @@ This is an expense tracker App created for the [Alkemy Labs](https://www.alkemy.
 
 You can see the live demo [here](https://alkemy-wallet.herokuapp.com/).
 
-In order to try it from the **live demo**, you will only need to start the local server locally. [Follow the instructions here]('').
+In order to try it from the **live demo**, you will only need to start the server locally.
 
-**To play with the project locally, keep reading below.**
+**To play with the project locally, follow the whole procces.**
 
 ## Usage
 
