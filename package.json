@@ -8,8 +8,9 @@
     "npm": "7.23.0"
   },
   "scripts": {
-    "start": "node index.js",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "server": "node index.js",
+    "heroku-postbuild": "cd client && npm install && npm run build",
+    "dev": "concurrently \"npm run start\" \"cd client && npm run start\""
   },
   "author": "@bvonpotobsky",
   "license": "ISC",
@@ -18,5 +19,8 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "pg": "^8.7.1"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.1"
   }
 }
