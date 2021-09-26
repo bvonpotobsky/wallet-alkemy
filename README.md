@@ -2,7 +2,7 @@
 
 This is an expense tracker App created for the [Alkemy Labs](https://www.alkemy.org/) challenge.
 
-![Demo gif](wallet-gif.gif)
+![Demo gif](./README-gif/wallet-gif.gif)
 
 You can see the live demo [here](https://alkemy-wallet.herokuapp.com/).
 
