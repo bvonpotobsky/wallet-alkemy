@@ -1,11 +1,14 @@
+import { StrictMode } from "react";
 import { WalletProvider } from "../context/WalletContext";
 import { AppUI } from "./AppUI";
 
 function App() {
   return (
-    <WalletProvider>
-      <AppUI />
-    </WalletProvider>
+    <StrictMode>
+      <WalletProvider>
+        <AppUI />
+      </WalletProvider>
+    </StrictMode>
   );
 }
 
