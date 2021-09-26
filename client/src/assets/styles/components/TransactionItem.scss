@@ -18,7 +18,7 @@
   &--desc {
     font-size: $medium;
     font-weight: 700;
-    margin-left: 5rem;
+    margin-left: 4.3rem;
 
     &::first-letter {
       text-transform: capitalize;
@@ -32,7 +32,7 @@
     justify-content: center;
     align-items: center;
     height: 100%;
-    margin-right: 5rem;
+    margin-right: 4rem;
   }
 
   &--amount {
@@ -62,7 +62,7 @@
     height: 100%;
     transform: scale(1.5);
     top: -3px;
-    right: 3px;
+    right: 5px;
     color: $color-dark-1;
     background-color: transparent;
     outline: none;
@@ -81,7 +81,7 @@
     height: 100%;
     transform: scale(1.5);
     top: -3px;
-    left: 8px;
+    left: 4px;
     color: $color-dark-1;
     background-color: transparent;
     outline: none;
