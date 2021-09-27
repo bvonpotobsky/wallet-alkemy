@@ -32,7 +32,7 @@ function Form() {
   return (
     <section className="AddNew">
       <h2 className="AddNew__title">Add new transaction</h2>
-      <form id="form" className="Form" onSubmit={onSubmit}>
+      <form id="form" className="Form" autoComplete="off" onSubmit={onSubmit}>
         <div className="Form__one">
           <input
             className="Form__one--text"
@@ -41,10 +41,11 @@ function Form() {
             id="text"
             placeholder="Enter description..."
             autoFocus
-            value={text}
-            onChange={(e) => setText(e.target.value)}
             required
             spellCheck="false"
+            autoComplete="off"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
           />
         </div>
         <p className="Form__explanation">
@@ -59,12 +60,13 @@ function Form() {
             name="amount"
             id="amount"
             placeholder="Amount"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
             required
+            autoComplete="off"
             step="any"
             max="9999999"
             min="-9999999"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
           />
           <input
             className="Form__two--date"

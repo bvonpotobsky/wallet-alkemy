@@ -14,6 +14,7 @@ function SearchTransaction() {
       placeholder="Search your transactions"
       value={searchValue}
       onChange={onSearchValueChange}
+      autoComplete="off"
     />
   );
 }

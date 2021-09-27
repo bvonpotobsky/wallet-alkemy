@@ -24,6 +24,7 @@ function EditForm({ id, text }) {
           autoFocus
           required
           spellCheck="false"
+          autoComplete="off"
           value={newText}
           onChange={(e) => setNewText(e.target.value)}
         />
