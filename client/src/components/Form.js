@@ -4,11 +4,10 @@ import { WalletContext } from "../context/WalletContext";
 function Form() {
   // Sets initial values for the datepicker
   const now = new Date();
-  const day = now.getDate().toString();
   // This brings the month without the 0 in front
-  const m = (now.getMonth() + 1).toString();
-  // Month formatted
-  const month = m > 9 ? m : "0" + m;
+  const d = now.getDate().toString();
+  const day = d > 9 ? d : "0" + d;
+  const month = (now.getMonth() + 1).toString();
   const year = now.getFullYear().toString();
 
   // Input states
