@@ -5,7 +5,7 @@ import { EditForm } from "./EditModal/EditForm";
 
 import dayjs from "dayjs";
 
-function TransactionItem({ id, text, amount, date, deleteTransaction }) {
+function TransactionItem({ id, description, amount, date, deleteTransaction }) {
   const { displayWithCommas, openModal, setOpenModal } =
     useContext(WalletContext);
 
@@ -34,7 +34,7 @@ function TransactionItem({ id, text, amount, date, deleteTransaction }) {
       >
         🗑️
       </button>
-      <p className="History__list__item--desc">{text}</p>
+      <p className="History__list__item--desc">{description}</p>
       <div>
         <p className="History__list__item--date">{formatDate(date)}</p>
         <p
@@ -51,7 +51,7 @@ function TransactionItem({ id, text, amount, date, deleteTransaction }) {
 
       {openModal && (
         <Modal>
-          <EditForm id={id} text={text} />
+          <EditForm id={id} description={description} />
         </Modal>
       )}
     </li>

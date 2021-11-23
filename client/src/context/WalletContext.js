@@ -1,42 +1,50 @@
+import axios from "axios";
+
 import { createContext, useState, useEffect } from "react";
 
 const WalletContext = createContext();
 
 function WalletProvider({ children }) {
   const [transactions, setTransactions] = useState([]);
+
   // Modal to edit transaction text
   const [openModal, setOpenModal] = useState(false);
 
   // All transactions amounts
-  const amounts = transactions.map((transaction) =>
+  const amounts = transactions?.map((transaction) =>
     parseFloat(transaction.amount)
   );
 
   // GET ALL Transactions
   const getTransactions = async () => {
     try {
-      const response = await fetch("http://localhost:5000/transactions");
-      const data = await response.json();
+      const response = await axios.get(
+        "http://localhost:3000/api/transactions/"
+      );
+      const data = await response.data;
 
       setTransactions(data);
+      return data;
     } catch (err) {
       console.error(err.message);
     }
   };
 
   // ADD Transaction
-  const addTransaction = async (text, amount, date) => {
+  const addTransaction = async (description, amount, date) => {
     try {
-      const body = { text, amount, date };
-      const response = await fetch("http://localhost:5000/transactions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
+      const response = await axios.post(
+        "http://localhost:3000/api/transactions/",
+        {
+          description,
+          amount,
+          date,
+        }
+      );
+      const data = await response.data;
 
-      console.log("Transaction has been added:", response.status);
-      // Re-render
-      getTransactions();
+      setTransactions([...transactions, data]);
+      return data;
     } catch (err) {
       console.error(err.message);
     }
@@ -45,17 +53,15 @@ function WalletProvider({ children }) {
   // DELETE /:id Transaction
   const deleteTransaction = async (id) => {
     try {
-      const deleteTransaction = await fetch(
-        `http://localhost:5000/transactions/${id}`,
-        {
-          method: "DELETE",
-        }
+      const response = await axios.delete(
+        `http://localhost:3000/api/transactions/${id}`
       );
 
-      console.log("Transaction was deleted:", deleteTransaction.status);
+      // Re-render the transactions
       setTransactions(
         transactions.filter((transaction) => transaction.id !== id)
       );
+      return response;
     } catch (err) {
       console.error(err.message);
     }
@@ -64,23 +70,32 @@ function WalletProvider({ children }) {
   // UPDATE /:id Transaction
   const updateTransaction = async (newText, id) => {
     try {
-      const body = { newText };
-      const editTransaction = await fetch(
-        `http://localhost:5000/transactions/${id}`,
+      const response = await axios.put(
+        `http://localhost:3000/api/transactions/${id}`,
         {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(body),
+          description: newText,
         }
       );
-      console.log("Transaction was updated", editTransaction.status);
-      getTransactions();
-      setOpenModal(false);
+
+      // Re-render the transactions
+      setTransactions(
+        transactions.map((transaction) =>
+          transaction.id === id
+            ? { ...transaction, description: newText }
+            : transaction
+        )
+      );
+
+      return response;
     } catch (err) {
       console.error(err.message);
-      console.log(err);
     }
   };
+
+  // Re-render transaction list
+  useEffect(() => {
+    getTransactions();
+  }, []);
 
   // SEARCH transactions
   const [searchValue, setSearchValue] = useState("");
@@ -92,7 +107,7 @@ function WalletProvider({ children }) {
     );
   } else {
     searchedTransactions = transactions.filter((transaction) => {
-      const transactionsText = transaction.text.toLowerCase();
+      const transactionsText = transaction.description.toLowerCase();
       const searchText = searchValue.toLowerCase();
       return transactionsText.includes(searchText);
     });
@@ -102,11 +117,6 @@ function WalletProvider({ children }) {
   function displayWithCommas(amount) {
     return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
-
-  // Re-render transaction list
-  useEffect(() => {
-    getTransactions();
-  }, []);
 
   return (
     <WalletContext.Provider

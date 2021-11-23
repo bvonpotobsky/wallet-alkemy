@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
 import { WalletContext } from "../../context/WalletContext";
 
-function EditForm({ id, text }) {
+function EditForm({ id, description }) {
   const { setOpenModal, updateTransaction } = useContext(WalletContext);
 
-  const [newText, setNewText] = useState(text);
+  const [newText, setNewText] = useState(description);
 
   const onEdit = (e) => {
     e.preventDefault();
@@ -35,7 +35,11 @@ function EditForm({ id, text }) {
         >
           Cancel
         </button>
-        <button className="EditForm__submit" type="submit">
+        <button
+          className="EditForm__submit"
+          type="submit"
+          onClick={() => setOpenModal(false)}
+        >
           Save
         </button>
       </form>

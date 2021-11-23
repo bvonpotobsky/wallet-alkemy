@@ -20,7 +20,7 @@ function AppUI() {
           <TransactionItem
             id={transaction.id}
             key={transaction.id}
-            text={transaction.text}
+            description={transaction.description}
             amount={transaction.amount}
             date={transaction.date}
             deleteTransaction={() => deleteTransaction(transaction.id)}
