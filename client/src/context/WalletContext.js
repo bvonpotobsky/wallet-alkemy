@@ -15,12 +15,12 @@ function WalletProvider({ children }) {
     parseFloat(transaction.amount)
   );
 
+  const API_URL = "http://localhost:3000/api/v1/transactions/";
+
   // GET ALL Transactions
   const getTransactions = async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:3000/api/transactions/"
-      );
+      const response = await axios.get(API_URL);
       const data = await response.data;
 
       setTransactions(data);
@@ -33,14 +33,11 @@ function WalletProvider({ children }) {
   // ADD Transaction
   const addTransaction = async (description, amount, date) => {
     try {
-      const response = await axios.post(
-        "http://localhost:3000/api/transactions/",
-        {
-          description,
-          amount,
-          date,
-        }
-      );
+      const response = await axios.post(API_URL, {
+        description,
+        amount,
+        date,
+      });
       const data = await response.data;
 
       setTransactions([...transactions, data]);
@@ -53,9 +50,7 @@ function WalletProvider({ children }) {
   // DELETE /:id Transaction
   const deleteTransaction = async (id) => {
     try {
-      const response = await axios.delete(
-        `http://localhost:3000/api/transactions/${id}`
-      );
+      const response = await axios.delete(`${API_URL}${id}`);
 
       // Re-render the transactions
       setTransactions(
@@ -70,12 +65,9 @@ function WalletProvider({ children }) {
   // UPDATE /:id Transaction
   const updateTransaction = async (newText, id) => {
     try {
-      const response = await axios.put(
-        `http://localhost:3000/api/transactions/${id}`,
-        {
-          description: newText,
-        }
-      );
+      const response = await axios.put(`${API_URL}${id}`, {
+        description: newText,
+      });
 
       // Re-render the transactions
       setTransactions(
