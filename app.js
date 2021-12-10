@@ -8,21 +8,18 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-// const whitelist = [
-//   "https://wallet-alkemy.vercel.app/",
-//   "http://localhost:3001",
-// ];
-// const options = {
-//   origin: (origin, callback) => {
-//     if (whitelist.includes(origin) || !origin) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error("no permitido"));
-//     }
-//   },
-// };
+const whitelist = ["https://wallet-alkemy.vercel.app", "http://localhost:3001"];
+const options = {
+  origin: (origin, callback) => {
+    if (whitelist.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("no permitido"));
+    }
+  },
+};
 
-app.use(cors());
+app.use(cors(options));
 app.use(express.json());
 
 routerAPI(app);
