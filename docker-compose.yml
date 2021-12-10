@@ -23,11 +23,10 @@ services:
   mysql:
     image: mysql:5
     environment:
-      - MYSQL_DATABASE=heroku_39ff028ba999390
-      - MYSQL_USER=bd8f774d0ac1ad
-      - MYSQL_ROOT_PASSWORD=e7446036
+      - MYSQL_DATABASE=my_store
+      - MYSQL_USER=root
+      - MYSQL_ROOT_PASSWORD=admin123
       - MYSQL_PORT=3306
-      - MYSQL_HOST=us-cdbr-east-05.cleardb.net
     ports:
       - 3306:3306
     volumes:
