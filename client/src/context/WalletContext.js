@@ -15,7 +15,7 @@ function WalletProvider({ children }) {
     parseFloat(transaction.amount)
   );
 
-  const API_URL = "http://localhost:3000/api/v1/transactions/";
+  const API_URL = "https://wallet-pern.herokuapp.com/api/v1/transactions/";
 
   // GET ALL Transactions
   const getTransactions = async () => {
