@@ -11,10 +11,10 @@ module.exports = {
     database: config.dbName,
     host: "127.0.0.1",
     port: config.dbPort,
-    dialect: "postgres",
+    dialect: "mysql",
   },
   production: {
     url: URI,
-    dialect: "postgres",
+    dialect: "mysql",
   },
 };
