@@ -9,7 +9,10 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-const whitelist = ["http://localhost:8080", "http://localhost:3001"];
+const whitelist = [
+  "https://wallet-alkemy.vercel.app/",
+  "http://localhost:3001",
+];
 const options = {
   origin: (origin, callback) => {
     if (whitelist.includes(origin) || !origin) {
